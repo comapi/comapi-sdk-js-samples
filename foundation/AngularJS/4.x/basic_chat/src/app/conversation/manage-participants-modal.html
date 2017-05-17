@@ -1,0 +1,60 @@
+  <div class="modal-header">
+    <h4 class="modal-title">Manage participants</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+    <div class="container">
+      <form #f="ngForm">
+        <p>Here is a list of the current participants in this conversation. Click the relative <b>delete</b> buttons to remove particular participants. This won't take effect until you hit <b>save</b></p>
+        <div class="row mb-2" *ngFor="let participant of conversationInfo.participants">
+
+            <div class="col">
+                <input type="text" class="form-control" [(ngModel)]="participant.id" name="participant-{{participant.id}}" readonly>
+            </div>
+
+            <div class="col">
+                <select [(ngModel)]="participant.role" name="role-{{participant.id}}" class="custom-select" disabled>
+                    <option>owner</option>
+                    <option>participant</option>
+                </select>
+            </div>
+
+            <div class="col">
+                <button (click)="removeParticipant(participant.id)" class="btn btn-warning" type="button">
+                  <i class="fa fa-trash-o"></i>
+                </button>
+            </div>
+        </div>
+
+        <hr/>
+
+        <p>To add a new participant, enter their profile Id in the field below, select their role and hit the <b>plus</b> button. This won't take effect until you hit <b>save</b></p>
+        <div class="row">
+
+            <div class="col">
+                <input type="text" class="form-control" [(ngModel)]="newParticipant.id" name="newParticipanrId" placeholder="Enter Profile Id ..." required>
+            </div>
+
+            <div class="col">
+                <select [(ngModel)]="newParticipant.role" name="newParticipantRole" class="custom-select" required>
+                    <option>owner</option>
+                    <option>participant</option>
+                </select>
+            </div>
+
+            <div class="col">
+                <button (click)="addParticipant()" class="btn btn-default" type="button"><i class="fa fa-plus"></i></button>
+            </div>
+
+        </div>
+      </form>
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-warning" type="button" (click)="cancel()">Cancel</button>    
+    <button type="button" class="btn btn-primary" (click)="save()">Save</button>
+  </div>

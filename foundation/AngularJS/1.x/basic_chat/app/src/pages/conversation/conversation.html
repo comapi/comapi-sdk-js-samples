@@ -1,0 +1,69 @@
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading text-center clearfix" >
+            <a class="btn btn-default pull-left" ui-sref="conversations" ><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+
+            <span>Conversation <b>{{conversation.name}}</b> with</span>
+
+
+            <ul class="list-inline" style="display:inline-block;">
+                <li class="list-inline-item" 
+                    ng-repeat="participant in participants">
+                    {{participant.id}}
+                </li>
+            </ul>
+
+            <button type="button" ng-click="manageParticipants()" class="btn btn-secondary btn-sm">Manage</button>
+
+
+            <div class="btn-group pull-right" uib-dropdown style="color:black;">
+                <button type="button" class="btn btn-default" uib-dropdown-toggle>
+                    <i class="fa fa-cogs" aria-hidden="true"></i>
+                </button>
+                <ul class="slidedown" uib-dropdown-menu>
+                    <li><a ng-click="manageParticipants()"><i class="fa fa-user-plus" aria-hidden="true"></i> Manage Participants</a></li>
+                    <li><a ng-click="deleteConversation()"><i class="fa fa-trash" aria-hidden="true"></i> Delete Conversation</a></li>
+                    <li><a ui-sref="login"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign out</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="panel-body" id="messages">
+            <ul class="chat" ng-if="messages.length > 0">
+
+                <!-- chat layout taken from here ...
+                    http://bootsnipp.com/snippets/vOyb 
+                -->
+
+                <li class="clearfix" ng-repeat="message in messages" ng-class="{ 'left' : message.context.from.id !== profileId,  'right' :message.context.from.id === profileId}">
+                    <span class="chat-img" ng-class="{ 'pull-left' : message.context.from.id !== profileId,  'pull-right' :message.context.from.id === profileId}">
+                        <i class="fa fa-user-circle-o fa-3x" ng-class="{ 'blue' : message.context.from.id !== profileId,  'red' :message.context.from.id === profileId}"></i>
+                    </span>
+
+                    <div class="chat-body clearfix">
+                        <div class="header">
+                            <small class="text-muted" ng-class="{ 'pull-right' : message.context.from.id !== profileId }">
+                                <span class="glyphicon glyphicon-time"></span>{{message.context.sentOn | prettyDate}}
+                            </small>
+                            <strong class="primary-font" ng-class="{ 'pull-right' :message.context.from.id === profileId}">{{message.context.from.id}}</strong>
+                        </div>
+                        <p>{{message.parts[0].data}}</p>
+                    </div>
+                </li>
+            </ul>
+            <div ng-if="messages.length === 0" class="jumbotron">
+
+                <h1 class="display-3">No messages</h1>
+                <p class="lead">there are no messages in this conversation 😿. Enter sone text in the input below and hit send 👍</p>
+
+            </div>            
+        </div>
+        <div class="panel-footer">
+            <div class="input-group">
+                <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." ng-model="message.text" ng-keydown="onKeyDown($event)"/>
+                <span class="input-group-btn">
+                    <button class="btn btn-warning btn-sm" ng-click="sendMessage()">Send</button>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

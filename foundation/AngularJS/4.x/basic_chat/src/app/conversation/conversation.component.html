@@ -1,0 +1,70 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header text-center">
+            <a class="btn btn-outline-primary pull-left"[routerLink]="['/conversations']"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+                    
+            <span>Conversation <b>{{conversation?.name}}</b> with</span>
+            
+            <ul class="list-inline d-inline-block">
+                <li class="list-inline-item text-danger" 
+                    *ngFor="let participant of participants"
+                    [ngClass]="{ 'text-danger' : participant.role == 'owner',  'text-primary' : participant.role  == 'participant'}">
+                    {{participant.id}}
+                </li>
+            </ul>
+
+            <button type="button" (click)="manageParticipants()" class="btn btn-secondary btn-sm">Manage</button>
+
+            <div ngbDropdown class="d-inline-block pull-right">
+                <button class="btn btn-outline-primary" id="controls" ngbDropdownToggle><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="controls">
+                  <button (click)="manageParticipants()" class="dropdown-item"><i class="fa fa-user-plus" aria-hidden="true"></i> Manage Participants</button>
+                  <button (click)="deleteConversation()" class="dropdown-item"><i class="fa fa-trash" aria-hidden="true"></i> Delete Conversation</button>
+                  <button [routerLink]="['/login']" class="dropdown-item"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign out</button>
+                </div>
+            </div>
+
+        </div>
+        <div class="card-block" id="messages" #scrollMe>
+
+            <ul class="chat" *ngIf="messages?.length > 0">
+
+                <!-- chat layout taken from here ...
+                    http://bootsnipp.com/snippets/vOyb 
+                -->
+
+                <li class="clearfix" *ngFor="let message of messages"  [ngClass]="{ 'left' : message.context.from.id !== profileId,  'right' :message.context.from.id === profileId}">
+                    <span class="chat-img" [ngClass]="{ 'pull-left' : message.context.from.id !== profileId,  'pull-right' :message.context.from.id === profileId}">
+                        <i class="fa fa-user-circle-o fa-3x" [ngClass]="{ 'blue' : message.context.from.id !== profileId,  'red' :message.context.from.id === profileId}"></i>
+                    </span>
+
+                    <div class="chat-body clearfix">
+                        <div class="header">
+                            <small class="text-muted" [ngClass]="{ 'pull-right' : message.context.from.id !== profileId }">
+                                <span class="glyphicon glyphicon-time"></span>{{message.context.sentOn | prettyDate}}
+                            </small>
+                            <strong class="primary-font" [ngClass]="{ 'pull-right' :message.context.from.id === profileId}">{{message.context.from.id}}</strong>
+                        </div>
+                        <p>{{message.parts[0].data}}</p>
+                    </div>
+                </li>
+            </ul>
+
+            <div *ngIf="messages?.length === 0" class="jumbotron">
+                <h1 class="display-3">No messages</h1>
+                <p class="lead">there are no messages in this conversation 😿. Enter sone text in the input below and hit send 👍</p>
+            </div>
+
+        </div>
+        <div class="card-footer">
+            <form #f="ngForm" (ngSubmit)="sendMessage()" >
+              <div class="input-group">
+                  <input type="text" class="form-control input-sm" placeholder="Type your message here..." [(ngModel)]="message.body" name="body" required />
+                  <span class="input-group-btn">
+                      <button class="btn btn-warning btn-sm" type="submit" [disabled]="!f.valid">Send</button>
+                  </span>
+              </div>
+            </form>
+        </div>
+    </div>
+</div>
