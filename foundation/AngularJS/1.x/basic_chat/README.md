@@ -1,4 +1,4 @@
-# Angular 2 COMAPI CHAT DEMO
+# AngularJS 1.x COMAPI CHAT DEMO
 This is a minimal sample app using just the Comapi Foundation SDK. 
 
 It is written in Angular 1.x

@@ -1,4 +1,4 @@
-# Angular 4 COMAPI CHAT DEMO
+# AngularJS 4.x COMAPI CHAT DEMO
 
 This is a minimal sample app using just the Comapi Foundation SDK. 
 
