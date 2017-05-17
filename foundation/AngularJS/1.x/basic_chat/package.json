@@ -4,7 +4,7 @@
     "description": "Comapi Chat Demo",
     "scripts": {
         "start": "node server.js",
-        "postinstall": "bower install & grunt build"
+        "postinstall": "bower install && grunt build"
     },
     "dependencies": {
         "bower": "^1.8.0",
