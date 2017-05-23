@@ -8,8 +8,8 @@
      * The view renders this list and allows the user to drill down into a conversation.
      */
     angular.module('compapiChat')
-        .controller('conversationsController', ["$rootScope", "$scope", "$state", "$uibModal", "comapiService", "authService",
-            function ($rootScope, $scope, $state, $uibModal, comapiService, authService) {
+        .controller('conversationsController', ["$rootScope", "$scope", "$state", "$uibModal", "comapiService", "authService", "growl",
+            function ($rootScope, $scope, $state, $uibModal, comapiService, authService, growl) {
 
                 // load in all the conversations this user is a member or
                 comapiService.getConversations()
@@ -52,7 +52,7 @@
                 $rootScope.$on('conversationMessage.sent', function (event, message) {
                     // A new message has been sent to a conversation that this user is part of
                     // Display a toast notification with a link to the conversation                    
-                    growl.info("New message received in another <a href='#/conversations/" + message.context.conversationId + "'>conversation</a>", { title: 'New Message', ttl: 5000 });
+                    growl.info("New message received in another <a href='#/conversations/" + message.context.conversationId + "'>conversation</a>", { title: 'New Message', ttl: -1 });
                 });
 
                 /**

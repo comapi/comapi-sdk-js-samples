@@ -47,7 +47,7 @@
                             $scope.messages.push(message);
                         });
                     } else {
-                        growl.info("New message received in another <a href='#/conversations/" + message.context.conversationId + "'>conversation</a>", { title: 'New Message', ttl: 5000 });
+                        growl.info("New message received in another <a href='#/conversations/" + message.context.conversationId + "'>conversation</a>", { title: 'New Message', ttl: -1 });
                     }
                 });
 
