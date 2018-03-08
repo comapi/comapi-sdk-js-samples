@@ -1,0 +1,57 @@
+<div class="modal-header">
+    <h3 class="modal-title">Manage conversation users</h3>
+</div>
+
+<div class="modal-body">
+
+    <p>Here is a list of the current participants in this conversation. Click the relative <b>delete</b> buttons to remove particular participants. This won't take effect until you hit <b>save</b></p>
+
+    <div class="row" ng-repeat="participant in conversationInfo.participants">
+
+        <div class="col-xs-4">
+            <input type="text" class="form-control" ng-model="participant.id" readonly>
+        </div>
+
+        <div class="col-xs-4">
+            <select ng-model="participant.role" class="form-control" disabled>
+                <option>owner</option>
+                <option>participant</option>
+            </select>
+        </div>
+
+        <div class="col-xs-4">
+            <button ng-click="removeParticipant(participant.id)" class="btn btn-default" type="button"><i class="fa fa-trash-o"></i></button>
+        </div>
+    </div>
+
+    <hr/>
+
+    <p>To add a new participant, enter their profile Id in the field below, select their role and hit the <b>plus</b> button. This won't take effect until you hit <b>save</b></p>
+
+    <form>
+
+        <div class="row">
+
+            <div class="col-xs-4">
+                <input type="text" class="form-control" ng-model="newParticipant.id" placeholder="Enter UserId ..." required>
+            </div>
+
+            <div class="col-xs-4">
+                <select ng-model="newParticipant.role" class="form-control" required>
+                    <option>owner</option>
+                    <option>participant</option>
+                </select>
+            </div>
+
+            <div class="col-xs-4">
+                <button ng-click="addParticipant()" class="btn btn-default" type="submit"><i class="fa fa-plus"></i></button>
+            </div>
+
+        </div>
+    </form>
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    <button class="btn btn-primary" type="button" ng-click="save()">Save</button>
+</div>

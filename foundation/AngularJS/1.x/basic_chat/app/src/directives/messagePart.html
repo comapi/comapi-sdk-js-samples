@@ -1,0 +1,24 @@
+<div>
+
+    <!-- an attachment --> 
+    <div ng-if="part.name" ng-switch="type">
+        
+        <a ng-switch-when="image" ng-href="{{getAttachmentLink()}}" download="{{part.name}}" target="_blank">    
+            <img class="img-responsive" ng-src="{{getAttachmentLink()}}" on-load style="max-width:150px;"/>        
+            <span class="attachment-name"><i class="fa fa-paperclip" aria-hidden="true"></i>&nbsp;{{part.name}}</span>
+        <a/>                
+        
+        <a ng-switch-default ng-href="{{getAttachmentLink()}}" download="{{part.name}}" target="_blank">                      
+            <span class="attachment-name"><i class="fa fa-paperclip" aria-hidden="true"></i>&nbsp;{{part.name}}</span>
+        <a/>
+
+    </div>
+
+    <!-- some inline part -->     
+    <div ng-if="!part.name" ng-switch="type">
+        <span class="chatText" ng-class="getClass()" ng-switch-when="text" ng-bind-html="part.data"></span>            
+    </div>
+                        
+
+
+</div>

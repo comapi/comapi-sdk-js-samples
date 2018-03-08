@@ -32,6 +32,8 @@
                 }
 
                 var comapiConfig = new COMAPI.ComapiConfig()
+                    .withUrlBase("http://local-docker-api.comapi.com:8000")
+                    .withWebSocketBase("ws://local-docker-api.comapi.com:8000")
                     .withApiSpace(appConfig.apiSpaceId)
                     .withAuthChallenge(_authChallenge);
 
@@ -165,6 +167,22 @@
                         return _getSdk()
                             .then(function (comapi) {
                                 var message = new COMAPI.MessageBuilder().withText(text);
+                                return comapi.services.appMessaging.sendMessageToConversation(conversationId, message);
+                            });
+                    },
+                    /**
+                     * 
+                     */
+                    sendAttachment: function (conversationId, fileObj) {
+                        return _getSdk()
+                            .then(function (comapi) {
+                                var content = COMAPI.ContentData.createFromBase64(fileObj.base64, fileObj.filename, fileObj.filetype);
+                                return Promise.all([comapi, comapi.services.appMessaging.uploadContent(content)]);
+                            })
+                            .then(function (result) {
+                                var comapi = result[0];
+                                var contentResult = result[1];
+                                var message = new COMAPI.MessageBuilder().withURL(contentResult.type, contentResult.url, contentResult.size, contentResult.name);
                                 return comapi.services.appMessaging.sendMessageToConversation(conversationId, message);
                             });
                     },

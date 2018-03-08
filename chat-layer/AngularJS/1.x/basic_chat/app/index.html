@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app='compapiChat'>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico?ver=3" />
+
+    <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="bower_components/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="bower_components/angular-growl-v2/build/angular-growl.css" rel="stylesheet">
+
+    <link href="css/chat.css" rel="stylesheet">
+    
+</head>
+
+<body>
+    <h1 class="text-center">Comapi Chat</h1>
+    <div growl></div>    
+    <section ui-view="content" class="container"></section>
+</body>
+
+<script src="build/vendorBundle.js"></script>
+<script src="build/appBundle.js"></script>
+<script src="//localhost:35729/livereload.js"></script>
+
+</html>
