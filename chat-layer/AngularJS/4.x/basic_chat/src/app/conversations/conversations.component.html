@@ -1,0 +1,44 @@
+
+<div class="container">
+    <div class="card">
+        <div class="card-header text-center">
+            <i class="fa fa-commenting-o" aria-hidden="true"></i> Conversations            
+
+            <div ngbDropdown class="d-inline-block pull-right" placement="bottom-right">
+                <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button (click)="createConversation()" class="dropdown-item"><i class="fa fa-plus-circle" aria-hidden="true"></i> Create Conversation</button>
+                    <button [routerLink]="['/login']" class="dropdown-item"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign out</button>
+                  </div>
+              </div>
+              
+        </div>
+        <div class="card-block" id="messages">
+            <ul class="chat" *ngIf="conversations?.length > 0">
+                <li class="clearfix left" *ngFor="let conversation of conversations" >
+                    <a [routerLink]="['/conversation', conversation.id]">
+                        <span class="chat-img pull-left" >
+                            <i class="fa fa-comments fa-2x"></i>
+                        </span>
+
+                        <div class="chat-body clearfix">
+                            <div class="header">
+                                <small class="text-muted pull-right" >
+                                    <span class="glyphicon glyphicon-time"></span>{{conversation.lastMessageTimestamp | prettyDate}}
+                                </small>
+                                <strong class="primary-font" >{{conversation.name}}</strong>
+                            </div>
+                            <p>{{conversation.description}}</p>
+                        </div>
+                    </a>                    
+                </li>
+            </ul>
+            
+            <div *ngIf="conversations?.length === 0" class="jumbotron">
+                <h1 class="display-3">No conversations</h1>
+                <p class="lead">You have no Conversations 😿. Click the button below to create one or use the dropdown menu above 👍</p>
+                <p><a class="btn btn-lg btn-success" (click)="createConversation()" role="button">Create</a></p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -46,7 +46,8 @@
                             </small>
                             <strong class="primary-font" ng-class="{ 'pull-right' :message.context.from.id === profileId}">{{message.context.from.id}}</strong>
                         </div>
-                        <p>{{message.parts[0].data}}</p>
+
+                        <message-part ng-repeat="part in message.parts" part="part"></message-part>
                     </div>
                 </li>
             </ul>
@@ -64,6 +65,8 @@
                     <button class="btn btn-warning btn-sm" ng-click="sendMessage()">Send</button>
                 </span>
             </div>
-        </div>
+            <div class="input-group">
+                <input type="file" class="form-control input-sm" name="fileAttachment" id="fileAttachment" base-sixty-four-input ng-model="message.attachment" onload="onLoadHandler">                 
+            </div>
     </div>
 </div>

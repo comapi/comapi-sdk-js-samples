@@ -8,10 +8,12 @@ module.exports = function (grunt) {
                 },
                 src: [
                     'app/bower_components/angular/angular.js',
+                    'app/bower_components/angular-sanitize/angular-sanitize.js',
                     'app/bower_components/angular-ui-router/release/angular-ui-router.js',
                     'app/bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
                     'app/bower_components/angular-growl-v2/build/angular-growl.js',
                     'app/bower_components/kjur-jsrsasign/jsrsasign-all-min.js',
+                    'app/bower_components/angular-base64-upload/dist/angular-base64-upload.js',
                     'app/bower_components/comapi-sdk-js-foundation/dist/comapi-foundation.js',
                 ],
                 dest: 'app/build/vendorBundle.js'

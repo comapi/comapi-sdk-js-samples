@@ -1,7 +1,7 @@
 (function (angular) {
     'use strict';
 
-    angular.module('compapiChat', ['ui.router', 'ui.bootstrap', 'angular-growl'])
+    angular.module('compapiChat', ['ngSanitize', 'ui.router', 'ui.bootstrap', 'angular-growl', 'naif.base64'])
         /**
          * 
          */

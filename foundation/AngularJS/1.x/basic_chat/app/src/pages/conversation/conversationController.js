@@ -118,6 +118,12 @@
                     }
                 }
 
+                $scope.onLoadHandler = function (e, reader, file, fileList, fileOjects, fileObj) {
+                    console.log("onLoadHandler()");
+
+                    comapiService.sendAttachment($scope.conversationId, fileObj);
+                }
+
             }]);
 
 })(window.angular);

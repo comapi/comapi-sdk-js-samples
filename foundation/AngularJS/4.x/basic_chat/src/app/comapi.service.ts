@@ -29,7 +29,10 @@ export class ComapiService {
 
     this.comapiConfig = new ComapiConfig()
       .withApiSpace(AppSettings.API_SPACE_ID)
-      .withAuthChallenge(this.authChallenge.bind(this));
+      .withAuthChallenge(this.authChallenge.bind(this))
+      .withUrlBase("http://local-docker-api.comapi.com:8000")
+      .withWebSocketBase("ws://local-docker-api.comapi.com:8000");
+
   }
 
   /**

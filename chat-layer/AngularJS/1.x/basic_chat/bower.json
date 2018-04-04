@@ -1,0 +1,31 @@
+{
+  "name": "comapi-chat",
+  "authors": [
+    "Univibe69"
+  ],
+  "description": "chat demo",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-ui-router": "0.3.2",
+    "bootstrap": "3.3.7",
+    "font-awesome": "^4.6.3",
+    "angular": "1.5.9",
+    "angular-sanitize": "1.5.9",
+    "angular-bootstrap": "2.2.0",
+    "comapi-sdk-js-foundation": "^1.0.0",
+    "kjur-jsrsasign": "jsrsasign#^7.1.3",
+    "angular-growl-v2": "angular-growl-2#^0.7.9",
+    "angular-base64-upload": "^0.1.23",
+    "comapi-sdk-js-chat": "^1.0.0"
+  }
+}

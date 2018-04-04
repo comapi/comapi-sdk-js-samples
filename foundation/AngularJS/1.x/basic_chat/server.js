@@ -4,7 +4,7 @@ var app = express();
 
 var http = require('http').Server(app);
 
-app.set('port', (process.env.PORT || 8080));
+app.set('port', (process.env.PORT || 8081));
 
 /**
  * Static route for all other app related files

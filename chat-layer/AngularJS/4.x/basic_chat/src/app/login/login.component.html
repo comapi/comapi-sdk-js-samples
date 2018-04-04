@@ -1,0 +1,41 @@
+<div class="container">
+
+
+    <div class="card">
+        <div class="card-header">
+            Login / Signout
+        </div>
+
+        <div class="card-block" id="messages">
+            <div *ngIf="currentProfileId === null">
+                <p>Enter a profile id that you would like to use to sign in with. This sample app is NOT performing any authentication for simplicity (hence the lack of any password).</p>
+
+                <form #f="ngForm" (ngSubmit)="login()" >
+                    <div class="form-group row">  
+                        <label class="col-sm-2 col-form-label col-form-label-lg">Enter a profileId</label>  
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" [(ngModel)]="user.profileId" name="profileId" required/>
+                        </div>
+                    </div>
+                    <div class="form-group row">    
+                        <label class="col-sm-2 col-form-label col-form-label-lg"></label>  
+                        <div class="col-sm-10">
+                            <button class="btn btn-info" type="submit" [disabled]="!f.valid">Login</button>
+                        </div>
+                    </div>
+                </form>
+            </div>    
+
+            <div *ngIf="currentProfileId !== null">
+                <p>Hit the logout button to sign out. You can log back in as a different user or the same user. No information is persisted between sessions.</p>
+                
+                <button class="btn btn-info" (click)="logout()">Logout</button>        
+            </div>  
+
+        </div>
+
+</div>
+
+
+
+
