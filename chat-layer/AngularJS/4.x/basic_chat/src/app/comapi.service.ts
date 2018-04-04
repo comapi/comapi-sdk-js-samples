@@ -3,7 +3,7 @@ import { Subject } from "rxjs/Subject"
 import { Subscription } from 'rxjs/Subscription';
 import { AuthService } from "./auth.service";
 
-import { IAuthChallengeOptions, ContentData } from '@comapi/sdk-js-foundation';
+import { IAuthChallengeOptions, ContentData, OrphanedEventPersistences, Environment } from '@comapi/sdk-js-foundation';
 import { ComapiChatClient, ComapiChatConfig } from '@comapi/sdk-js-chat';
 
 import { AppSettings } from "./app.settings";
@@ -28,7 +28,7 @@ export class ComapiService {
       .withAuthChallenge(this.authChallenge.bind(this))
       .withUrlBase("http://local-docker-api.comapi.com:8000")
       .withWebSocketBase("ws://local-docker-api.comapi.com:8000")
-      .withOrphanedEventPersistence(2/*LocalStorage*/);
+      .withOrphanedEventPersistence(OrphanedEventPersistences.LocalStorage);
   }
 
   /**

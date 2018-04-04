@@ -41,6 +41,9 @@
                     .withWebSocketBase("ws://local-docker-api.comapi.com:8000")
                     .withOrphanedEventPersistence(2/*LocalStorage*/);
 
+
+
+
                 var service = {
 
                     /**

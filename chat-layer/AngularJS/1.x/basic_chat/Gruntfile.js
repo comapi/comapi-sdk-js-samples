@@ -14,7 +14,7 @@ module.exports = function (grunt) {
                     'app/bower_components/angular-growl-v2/build/angular-growl.js',
                     'app/bower_components/kjur-jsrsasign/jsrsasign-all-min.js',
                     'app/bower_components/angular-base64-upload/dist/angular-base64-upload.js',
-                    'app/lib/comapi-chat-client.js',
+                    'app/bower_components/comapi-sdk-js-chat/dist/comapi-chat-client.js',
                 ],
                 dest: 'app/build/vendorBundle.js'
             },

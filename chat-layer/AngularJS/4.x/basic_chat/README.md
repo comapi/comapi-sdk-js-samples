@@ -39,7 +39,7 @@ git clone https://github.com/comapi/comapi-sdk-js-samples.git
 ```
 Change directory into the sample folder of this newly cloned repository
 ```
-cd ./comapi-sdk-js-samples/foundation/AngularJS/4.x/basic_chat
+cd ./comapi-sdk-js-samples/chat-layer/AngularJS/4.x/basic_chat
 ```
 
 - Enter your API Space Id in [app.settings.ts](src/app/app.settings.ts)
@@ -49,16 +49,13 @@ cd ./comapi-sdk-js-samples/foundation/AngularJS/4.x/basic_chat
 
 
 Comapi sdk is installed via a npm as part of `npm install`
-This demo shows how to consume the Comapi JS sdk using ES6 style imports.
-
+This demo shows how to consume the Comapi Chat Layer using ES6 style imports.
 
 The project uses a Service to encapsulate Comapi sdk and provide messaging functionality to the app.
 
 ### Key Features:
  
  * Sdk initialisation and authentication are managed internally within this service - The app can just call the methods they require and the requested result will be returned via a promise.
-
- * Comapi events are internally subscribed to and re-published using rxjx Subjects to fit in with the angular framework and to mitigate against any race conditions with subscribing before sdk is initialised. 
 
 ## App Architecture
 Here is a quick run through of the functionality that this app exposes. There are basically 3 pages as follows ...

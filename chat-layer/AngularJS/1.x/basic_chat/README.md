@@ -1,5 +1,5 @@
 # AngularJS 1.x COMAPI CHAT DEMO
-This is a minimal sample app using just the Comapi Foundation SDK. 
+This is a minimal sample app using Comapi Chat Layer SDK. 
 
 It is written in Angular 1.x
 
@@ -36,7 +36,7 @@ git clone https://github.com/comapi/comapi-sdk-js-samples.git
 ```
 Change directory into the sample folder of this newly cloned repository
 ```
-cd ./comapi-sdk-js-samples/foundation/AngularJS/1.x/basic_chat
+cd ./comapi-sdk-js-samples/chat-layer/AngularJS/1.x/basic_chat
 ```
 
 - Enter your API Space Id in [config.js](app/src/config.js)
@@ -45,9 +45,9 @@ cd ./comapi-sdk-js-samples/foundation/AngularJS/1.x/basic_chat
 - Browse to [here](http://localhost:8080) to see the app running
 
 Comapi sdk is installed via bower as part of `npm install`
-This demo shows how to consume the Comapi JS sdk in a classical fashion.
+This demo shows how to consume the Comapi Chat Layer JS.
 
-The file [comapi-foundation.js](app/bower_components/comapi-sdk-js-foundation/dist/comapi-foundation.js) is included in the [vendorBundle.js](app/build/vendorBundle.js) which exports all COmapi interfaces via a global window.COMAPI object.
+The file [comapi-foundation.js](app/bower_components/comapi-sdk-js-chat/dist/comapi-chat-client.js) is included in the [vendorBundle.js](app/build/vendorBundle.js) which exports all Comapi interfaces via a global window.COMAPI object.
 
 
 
@@ -56,8 +56,6 @@ The project uses a Service to encapsulate Comapi sdk and provide messaging funct
 ### Key Features:
  
  * Sdk initialisation and authentication are managed internally within this service - The app can just call the methods they require and the requested result will be returned via a promise.
-
- * Comapi events are internally subscribed to and re-broadcasted on $rootScope to fit in with the angular framework and to mitigate against any race conditions with subscribing before sdk is initialised. 
 
 ## App Architecture
 Here is a quick run through of the functionality that this app exposes. There are basically 3 pages as follows ...
