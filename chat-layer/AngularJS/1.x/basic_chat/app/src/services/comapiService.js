@@ -37,11 +37,7 @@
                     .withStore(comapiChatStore)
                     .withApiSpace(appConfig.apiSpaceId)
                     .withAuthChallenge(_authChallenge)
-                    .withUrlBase("http://local-docker-api.comapi.com:8000")
-                    .withWebSocketBase("ws://local-docker-api.comapi.com:8000")
                     .withOrphanedEventPersistence(2/*LocalStorage*/);
-
-
 
 
                 var service = {

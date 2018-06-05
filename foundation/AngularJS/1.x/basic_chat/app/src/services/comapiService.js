@@ -32,8 +32,6 @@
                 }
 
                 var comapiConfig = new COMAPI.ComapiConfig()
-                    .withUrlBase("http://local-docker-api.comapi.com:8000")
-                    .withWebSocketBase("ws://local-docker-api.comapi.com:8000")
                     .withApiSpace(appConfig.apiSpaceId)
                     .withAuthChallenge(_authChallenge);
 
@@ -48,6 +46,9 @@
                             .then(function (result) {
                                 _comapiSDK = result;
                                 _subscribe();
+                                return _comapiSDK.startSession();
+                            })
+                            .then(function (result) {
                                 return _comapiSDK;
                             });
                     }

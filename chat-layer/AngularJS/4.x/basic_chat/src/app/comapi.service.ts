@@ -26,8 +26,6 @@ export class ComapiService {
       .withStore(_injector.get("ConversationStoreService"))
       .withApiSpace(AppSettings.API_SPACE_ID)
       .withAuthChallenge(this.authChallenge.bind(this))
-      .withUrlBase("http://local-docker-api.comapi.com:8000")
-      .withWebSocketBase("ws://local-docker-api.comapi.com:8000")
       .withOrphanedEventPersistence(OrphanedEventPersistences.LocalStorage);
   }
 
