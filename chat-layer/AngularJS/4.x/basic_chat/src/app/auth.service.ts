@@ -31,7 +31,7 @@ export class AuthService {
     };
     let sHeader = JSON.stringify(oHeader);
     let sPayload = JSON.stringify(oPayload);
-    let sJWT = KJUR.jws.JWS.sign("HS256", sHeader, sPayload, "secret");
+    let sJWT = KJUR.jws.JWS.sign("HS256", sHeader, sPayload, {utf8: "secret"});
 
     return Promise.resolve(sJWT);
   }
